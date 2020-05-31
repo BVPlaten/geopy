@@ -1,5 +1,5 @@
 # GeoPy.py 
-# playing with geometric math (triangle)
+# ein script zum zeichnen einfacher formen
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # 31.05.2019  bvp  initial release

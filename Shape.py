@@ -1,4 +1,4 @@
 class Shape(object):
-    """description of class"""
+    """Basisklasse für die geometrischen Figuren !"""
 
 
