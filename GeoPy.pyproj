@@ -5,7 +5,7 @@
     <ProjectGuid>179347f4-ba27-4ca9-99b6-54e588f6a35f</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>GeoPy.py</StartupFile>
+    <StartupFile>Shape.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
