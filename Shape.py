@@ -1,7 +1,20 @@
 import turtle as t
 
-class Shape(object):
+class CoordSys(object):
     """Basisklasse für die geometrischen Figuren !"""
+
+    def __init__(self, coords):
+        t.up()
+        t.setx(coords[0])
+        t.sety(coords[1])
+        t.down()
+        self.zeichneXachse(25)          # zeichne die X-Achse
+        t.setx(coords[0])
+        t.sety(coords[1])
+        self.zeichneYachse(25)          # zeichne die X-Achse
+        t.setx(coords[0])
+        t.sety(coords[1])
+        return super().__init__()
 
     # setze die Farbe zum Füllen
     #
@@ -19,23 +32,15 @@ class Shape(object):
     def zeichneXachse(self,schrt):
         t.setheading(0)
         for i in range(schrt):
+            t.fd(schrt)
             pos = t.position()
-            t.setpos(pos[0]+schrt,pos[1])
-            t.setpos(pos[0]+schrt,pos[1]+5)
-            t.setpos(pos[0]+schrt,pos[1])
-        # zeichne Pfeilspitze X
-        pos = t.position()
-        t.setpos(pos[0]  ,pos[1]+5 )
-        t.setpos(pos[0]+7,pos[1]   )
-        t.setpos(pos[0]  ,pos[1]-5 )
-        t.setpos(pos[0]  ,pos[1]   )
-        t.up()
-        t.setpos(pos[0]+12,pos[1]+12)
-        t.down()
-        t.write("X")
+            t.setpos(pos[0],pos[1] - 7)
+            t.setpos(pos[0],pos[1])
+        # zeichne pfeilspitze Y
+        self.pfeilX()
 
     # Funktion zeichneYachse
-    # zeichnet die X-Achse mit Pfeil und Beschriftung
+    # zeichnet die Y-Achse mit Pfeil und Beschriftung
     #
     # Parameter: schrt : Anzahl der Schritte 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -44,51 +49,64 @@ class Shape(object):
     def zeichneYachse(self,schrt):
         t.setheading(90)
         for i in range(schrt):
+            t.fd(schrt)
             pos = t.position()
-            t.setpos(pos[0]  ,pos[1]+schrt)
-            t.setpos(pos[0]+5,pos[1]+schrt)
-            t.setpos(pos[0]  ,pos[1]+schrt)
+            t.setpos(pos[0]-7,pos[1] )
+            t.setpos(pos[0]  ,pos[1] )
         # zeichne pfeilspitze Y
-        pos = t.position()
-        t.setpos(pos[0]+5,pos[1]  )
-        t.setpos(pos[0]  ,pos[1]+7)
-        t.setpos(pos[0]-5,pos[1]  )
-        t.setpos(pos[0]  ,pos[1]  )
-        t.up()
-        t.setpos(pos[0]-12,pos[1]+12)
-        t.down()
-        t.write("Y")
+        self.pfeilY()
 
-    # Funktion KoordSystem 
+
+
+    # Funktion pfeilX
+    # zeichnet die die Pfeilspitze am Ende der X-Achse
     #
-    # zeichne ein 2D koordinatensystem
+    # Parameter: schrt : Anzahl der Schritte 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # 01.06.2020  bvp  erste version
     #
-    def KoordSystem(self):
-        xStrt = -250
-        yStrt = -250
-        t.speed(2)
+    def pfeilX( self ):
+        pos = t.position()
+        t.setpos(pos[0]   ,pos[1]-7 )
+        t.setpos(pos[0]+13,pos[1]   )
+        t.setpos(pos[0]   ,pos[1]+7 )
+        t.setpos(pos[0]   ,pos[1]   )
         t.up()
-        t.setpos(xStrt,yStrt)
+        t.setpos(pos[0]+15,pos[1]-15)
+        t.down()
+        t.write("X-Achse")
+        t.up()
+        t.setpos(pos[0]   ,pos[1]   )
         t.down()
 
-        # zeichne die X-Achse
-        self.zeichneXachse(25)
-
+    # Funktion pfeilY
+    # zeichnet die die Pfeilspitze am Ende der Y-Achse
+    #
+    # Parameter: schrt : Anzahl der Schritte 
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # 01.06.2020  bvp  erste version
+    #
+    def pfeilY( self ):
+        pos = t.position()
+        t.setpos(pos[0]-7 ,pos[1]   )
+        t.setpos(pos[0]   ,pos[1]+13)
+        t.setpos(pos[0]+7 ,pos[1]   )
+        t.setpos(pos[0]   ,pos[1]   )
         t.up()
-        t.setpos(xStrt,yStrt)
+        t.setpos(pos[0]-15,pos[1]+15)
         t.down()
-        
+        t.write("Y-Achse")
+        t.up()
+        t.setpos(pos[0]   ,pos[1]   )
+        t.down()
 
-        # zeichne die Y-Achse
-        self.zeichneYachse(25)
 
 
 
 def main():
-    s = Shape()
-    s.KoordSystem()
+    strtPos = (-300,-300)
+    s = CoordSys(strtPos)
+    
     
 if __name__ == "__main__":
     main()
