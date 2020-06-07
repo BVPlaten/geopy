@@ -1,20 +1,25 @@
 import turtle as t
+import GeoBase
 
-class CoordSys(object):
+class CoordSys(GeoBase.GeoBase):
     """Basisklasse für die geometrischen Figuren !"""
 
-    def __init__(self, coords):
-        t.up()
-        t.setx(coords[0])
-        t.sety(coords[1])
-        t.down()
+    def __init__(self, confg):
+        super().__init__(confg)
+        self.openWindow()
+        # t.up()
+        # t.setx(coords[0])
+        # t.sety(coords[1])
+        # t.down()
         self.zeichneXachse(25)          # zeichne die X-Achse
-        t.setx(coords[0])
-        t.sety(coords[1])
+        # t.setx(coords[0])
+        # t.sety(coords[1])
+        self.goStart()
         self.zeichneYachse(25)          # zeichne die X-Achse
-        t.setx(coords[0])
-        t.sety(coords[1])
-        return super().__init__()
+        # t.setx(coords[0])
+        # t.sety(coords[1])
+        self.goStart()
+        return 
 
     # setze die Farbe zum Füllen
     #
